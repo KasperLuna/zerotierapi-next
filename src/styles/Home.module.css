@@ -49,24 +49,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  width: 150px;
-  max-width: 150px;
+  align-items: start;
+  width: 200px;
+  max-width: 200px;
+}
+
+.nameGroup * {
+  margin: 0;
+  line-height: 1;
+  display: inline-block;
 }
 
 .nameGroup 
 * {
   margin: 0.5rem 0;
-}
-
-.activeRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: fit-content;
 }
 
 .activeStack {
@@ -91,21 +87,23 @@
 }
 
 .active {
-  height: 20px;
-  width: 20px;
-  background-color: limegreen;
+  height: 17px;
+  width: 17px;
+  background-color: yellowgreen;
   border-radius: 50%;
   display: inline-block;
   margin-right: 5px;
+  margin-block: auto;
 }
 
 .inactive{  
-  height: 20px;
-  width: 20px;
-  background-color: maroon;
+  height: 17px;
+  width: 17px;
+  background-color: red;
   border-radius: 50%;
   display: inline-block;
   margin-right: 5px;
+  margin-block: auto;
 }
 
 @media (max-width: 600px) {

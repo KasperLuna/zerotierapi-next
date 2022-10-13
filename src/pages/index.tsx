@@ -103,14 +103,14 @@ const Home: NextPage<HomeProps> = (props) => {
     <div className={styles.container}>
       <Head>
         <title>{`Kasper's ${process.env.NEXT_PUBLIC_NETWORK_NAME} ZT Network`}</title>
-        <meta name="description" content="Kasper's Zerotier Network Activity Monitor" />
+        <meta name="description" content="Kasper's Zerotier Network Monitor" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
         <h3 className={styles.title}>
-          <a href="https://kasperluna.com" target="_blank" rel="noreferrer">Kasper&apos;s</a> {process.env.NEXT_PUBLIC_NETWORK_NAME} ZeroTier Network Activity
+          <a href="https://kasperluna.com" target="_blank" rel="noreferrer">Kasper&apos;s</a> {process.env.NEXT_PUBLIC_NETWORK_NAME} ZeroTier Network Monitor
         </h3>
-        <h2>{`Listed are the nodes registered on the ${process.env.NEXT_PUBLIC_NETWORK_NAME} Zerotier network. Addresses are only relevant to each other.`}</h2>
+        <h2>{`Here are the nodes registered on the ${process.env.NEXT_PUBLIC_NETWORK_NAME} Zerotier network. Addresses are only relevant to each other.`}</h2>
         <small>{`Snapshot as of ${format(data[0].clock, "KK:mm aa")}, sorted by last time online. `}</small>
         <button onClick={() => window.location.reload()}>Refresh</button>
         <ul className={styles.grid}>
@@ -118,14 +118,11 @@ const Home: NextPage<HomeProps> = (props) => {
           {data.sort().map((member) => (
             <li key={member.name} className={styles.item}>
               <div className={styles.nameGroup}>
-                <h2>{member.name}</h2>
+                <h2><ActiveIndicator online={member.online} />{member.name}</h2>
                 <p>{member.description}</p>
+                <small>{member.online ? "Online" : "Offline"}</small>
               </div>
               <div className={styles.activeStack}>
-                <div className={styles.activeRow}>
-                  <ActiveIndicator online={member.online} />
-                  <p>{member.online ? "Online" : "Offline"}</p>
-                </div>
                 <p className={styles.lastSeen}>{`Last seen: ${formatRelative(new Date(member.lastOnline), new Date())}`}</p>
                 <p>{member.ipAssignment}</p>
               </div>
