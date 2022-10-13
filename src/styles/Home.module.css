@@ -50,8 +50,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  width: 200px;
-  max-width: 200px;
+  text-align: start;
+  width: 175px;
+  max-width: 175px;
+  padding-right: 5px;
 }
 
 .nameGroup * {
@@ -72,7 +74,7 @@
   align-items: center;
   text-align: center;
   height: fit-content;
-  width: 150px;
+  width: 140px;
   max-width: 150px;
 }
 
@@ -83,7 +85,7 @@
 .lastSeen {
   background-color: rgb(255, 255, 255);
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0.4rem;
 }
 
 .active {
