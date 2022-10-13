@@ -105,7 +105,6 @@ const Home: NextPage<HomeProps> = (props) => {
         <title>{`Kasper's ${process.env.NEXT_PUBLIC_NETWORK_NAME} ZT Network`}</title>
         <meta name="description" content="Kasper's Zerotier Network Activity Monitor" />
         <link rel="icon" href="/favicon.ico" />
-
       </Head>
       <main className={styles.main}>
         <h3 className={styles.title}>
@@ -113,6 +112,7 @@ const Home: NextPage<HomeProps> = (props) => {
         </h3>
         <h2>{`Listed are the nodes registered on the ${process.env.NEXT_PUBLIC_NETWORK_NAME} Zerotier network. Addresses are only relevant to each other.`}</h2>
         <small>{`Snapshot as of ${format(data[0].clock, "KK:mm aa")}, sorted by last time online. `}</small>
+        <button onClick={() => window.location.reload()}>Refresh</button>
         <ul className={styles.grid}>
 
           {data.sort().map((member) => (
