@@ -130,9 +130,9 @@
     filter: invert(1);
   }
   .item{
-    background-color: rgb(26, 16, 16);
+    background-color: rgb(39, 33, 33);
   }
   .lastSeen {
-    background-color: rgb(50, 39, 39);  
+    background-color: rgb(72, 52, 52);  
   }
 }
