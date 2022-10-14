@@ -9,10 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prefresh/babel-plugin": "^0.4.3",
     "date-fns": "^2.29.3",
     "next": "12.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next-plugin-preact": "^3.0.7",
+    "preact": "^10.11.1",
+    "preact-render-to-string": "^5.2.5",
+    "react": "npm:@preact/compat@17.1.2",
+    "react-dom": "npm:@preact/compat@17.1.2",
+    "react-ssr-prepass": "npm:preact-ssr-prepass@^1.2.0",
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@types/node": "18.8.5",
