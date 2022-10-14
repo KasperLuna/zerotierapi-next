@@ -111,7 +111,7 @@ const Home: NextPage<HomeProps> = (props) => {
           <a href="https://kasperluna.com" target="_blank" rel="noreferrer">Kasper&apos;s</a> {process.env.NEXT_PUBLIC_NETWORK_NAME} ZeroTier Network Monitor
         </h3>
         <h2>{`Here are the nodes registered on the ${process.env.NEXT_PUBLIC_NETWORK_NAME} Zerotier network. Addresses are only relevant to each other.`}</h2>
-        <small>{`Snapshot as of ${format(data[0].clock, "KK:mm aa")}, sorted by last time online. `}</small>
+        <small>{`Snapshot as of ${format(data[0].clock, "hh:mm aa")}, sorted by last time online. `}</small>
         <button onClick={() => window.location.reload()}>Refresh</button>
         <ul className={styles.grid}>
 
