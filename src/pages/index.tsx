@@ -124,7 +124,7 @@ const Home: NextPage<HomeProps> = (props) => {
               </div>
               <div className={styles.activeStack}>
                 <p className={styles.lastSeen}>{`Last seen: ${formatRelative(new Date(member.lastOnline), new Date())}`}</p>
-                <p>{member.ipAssignment}</p>
+                <p>{member.ipAssignment[0]}</p>
               </div>
             </li>
           ))}
