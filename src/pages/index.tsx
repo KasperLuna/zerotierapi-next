@@ -110,7 +110,7 @@ const Home: NextPage<HomeProps> = (props) => {
         <h3 className={styles.title}>
           <a href="https://kasperluna.com" target="_blank" rel="noreferrer">Kasper&apos;s</a> {process.env.NEXT_PUBLIC_NETWORK_NAME} ZeroTier Network Monitor
         </h3>
-        <h2>{`Here are the nodes registered on the ${process.env.NEXT_PUBLIC_NETWORK_NAME} Zerotier network. Addresses are only relevant to each other.`}</h2>
+        <h2 className={styles.description}>{`Here are the nodes registered on the ${process.env.NEXT_PUBLIC_NETWORK_NAME} Zerotier network. Addresses are only relevant to each other.`}</h2>
         <small>{`Snapshot as of ${format(data[0].clock, "hh:mm aa")}, sorted by last time online. `}</small>
         <button onClick={() => window.location.reload()}>Refresh</button>
         <ul className={styles.grid}>
@@ -118,7 +118,7 @@ const Home: NextPage<HomeProps> = (props) => {
           {data.sort().map((member) => (
             <li key={member.name} className={styles.item}>
               <div className={styles.nameGroup}>
-                <h2><ActiveIndicator online={member.online} />{member.name}</h2>
+                <h2 className={styles.name}><ActiveIndicator online={member.online} />{member.name}</h2>
                 <p>{member.description}</p>
                 <small>{member.online ? "Online" : "Offline"}</small>
               </div>
@@ -132,7 +132,7 @@ const Home: NextPage<HomeProps> = (props) => {
       </main>
 
 
-    </div>
+    </div >
   )
 }
 
