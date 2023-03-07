@@ -2,6 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { formatRelative, format } from "date-fns";
+import { on } from "events";
 
 type APIResponse = {
   id: string;
@@ -108,6 +109,7 @@ const CopyIcon = ({ onClick }: { onClick: () => void }) => {
         margin: "0px",
         marginLeft: "5px",
       }}
+      onClick={onClick}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
