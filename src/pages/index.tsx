@@ -2,7 +2,6 @@ import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { formatRelative, format } from "date-fns";
-import { on } from "events";
 
 type APIResponse = {
   id: string;
@@ -13,7 +12,6 @@ type APIResponse = {
   controllerId: string;
   hidden: boolean;
   name: string;
-  online: boolean;
   description: string;
   config: {
     activeBridge: boolean;
@@ -65,7 +63,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       name: item.name,
       clock: item.clock,
       description: item.description,
-      online: item.online,
       lastOnline: item.lastOnline,
       ipAssignment: item.config.ipAssignments,
     };
@@ -88,7 +85,6 @@ type HomeProps = {
     name: string;
     clock: number;
     description: string;
-    online: boolean;
     lastOnline: number;
     ipAssignment: number[];
   }[];
@@ -128,9 +124,7 @@ const CopyIcon = ({ onClick }: { onClick: () => void }) => {
   );
 };
 
-const Home: NextPage<HomeProps> = (props) => {
-  const data = props.data;
-
+const Home: NextPage<HomeProps> = ({ data }) => {
   const sortedData = [...data].sort();
 
   return (
@@ -156,15 +150,17 @@ const Home: NextPage<HomeProps> = (props) => {
         )}, sorted by last time online. `}</small>
         <button onClick={() => window.location.reload()}>Refresh</button>
         <ul className={styles.grid}>
-          {sortedData.map((member) => (
-            <li key={member.name} className={styles.item}>
+          {sortedData.map((member) => {
+            const online = member.lastOnline > Date.now() - 1000 * 60 * 5;
+
+            return (<li key={member.name} className={styles.item}>
               <div className={styles.nameGroup}>
                 <h2 className={styles.name}>
-                  <ActiveIndicator online={member.online} />
+                  <ActiveIndicator online={online} />
                   {member.name}
                 </h2>
                 <p>{member.description}</p>
-                <small>{member.online ? "Online" : "Offline"}</small>
+                <small>{online ? "Online" : "Offline"}</small>
               </div>
               <div className={styles.activeStack}>
                 <p className={styles.lastSeen}>{`Last seen: ${formatRelative(
@@ -183,7 +179,8 @@ const Home: NextPage<HomeProps> = (props) => {
                 </div>
               </div>
             </li>
-          ))}
+            )
+          })}
         </ul>
       </main>
     </div>
