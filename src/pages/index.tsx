@@ -2,6 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { formatRelative, format } from "date-fns";
+import { useState, useEffect } from "react";
 
 type APIResponse = {
   id: string;
@@ -124,6 +125,25 @@ const CopyIcon = ({ onClick }: { onClick: () => void }) => {
   );
 };
 
+const CountdownRefresh = () => {
+  const [countdown, setCountdown] = useState(10);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1000);
+
+    if (countdown === 0) {
+      clearInterval(interval);
+      window.location.reload();
+    }
+
+    return () => clearInterval(interval);
+  }, [countdown]);
+
+  return <div>Refreshing in {countdown} seconds...</div>;
+};
+
 const Home: NextPage<HomeProps> = ({ data }) => {
   const sortedData = [...data].sort();
 
@@ -149,6 +169,7 @@ const Home: NextPage<HomeProps> = ({ data }) => {
           "hh:mm aa"
         )}, sorted by last time online. `}</small>
         <button onClick={() => window.location.reload()}>Refresh</button>
+        <CountdownRefresh />
         <ul className={styles.grid}>
           {sortedData.map((member) => {
             const online = member.lastOnline > Date.now() - 1000 * 60 * 5;
