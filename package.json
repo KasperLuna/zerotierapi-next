@@ -11,13 +11,9 @@
   "dependencies": {
     "@prefresh/babel-plugin": "^0.4.3",
     "date-fns": "^2.29.3",
-    "next": "12.3.1",
-    "next-plugin-preact": "^3.0.7",
-    "preact": "^10.11.1",
-    "preact-render-to-string": "^5.2.5",
-    "react": "npm:@preact/compat@17.1.2",
-    "react-dom": "npm:@preact/compat@17.1.2",
-    "react-ssr-prepass": "npm:preact-ssr-prepass@^1.2.0",
+    "next": "15.2.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "webpack": "^5.74.0"
   },
   "devDependencies": {
